@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Animation</title>
+</head>
+<body>
+    <style>
+        #animatedText {
+            color: blue; /* Set the text color */
+            font-size: 24px; /* Set the font size */
+            font-family: 'Arial', sans-serif; /* Set the font family */
+        }
+    </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const textElement = document.getElementById('animatedText');
+        const originalText = "my name is Aliyu muhammad sagir,a frontend developer with passion in building website for business and individual organisation and companies";
+        const animationSpeed = 50; // Adjust the speed (in milliseconds) based on your preference
+
+        animateString(textElement, originalText, animationSpeed);
+    });
+
+    function animateString(element, originalText, animationSpeed) {
+        let index = 0;
+
+        function updateText() {
+            element.textContent = originalText.substring(0, index + 1);
+            index++;
+
+            if (index > originalText.length) {
+                clearInterval(animationInterval);
+            }
+        }
+
+        const animationInterval = setInterval(updateText, animationSpeed);
+    }
+</script>
+
+<p id="animatedText"></p>
+
+</body>
+</html>
